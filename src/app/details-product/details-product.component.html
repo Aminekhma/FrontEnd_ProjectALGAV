@@ -1,0 +1,51 @@
+<label for="product">Selectionnez le produit  : </label>
+<input type="text" id="prod" name="prod" list="product-list" #prod>
+
+<datalist id="product-list">
+	<option *ngFor="let p of products">{{p.name}}</option>
+</datalist>
+
+   <button type="button" (click)="getProductName(prod.value)">
+      search</button><br><br>
+
+   
+   <input type="text" id="qte" name="qte" list="qte-list" #qte>
+   <button type="button" (click)="incrementQteStock(qte.value,prod.value)">
+      Ajouter stock articles</button>
+   <button type="button" (click)="decrementQteStock(qte.value,prod.value)">
+      Retirer Stock articles</button><br><br>
+
+
+   <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
+   <button type="button" (click)="changePourcentage(pourcentage.value,prod.value)">Changement %</button><br><br>
+
+
+   <body>
+      <div id="infosProduct">
+          <h1>Descriptions Produits</h1>
+          <ul>
+               <li>
+                  Nom : {{product.name}}
+               </li>
+               <li>
+                  Prix : {{product.price}} euros
+               </li>
+               <li>
+                  Prix en promotion : {{product.discount_price}} euros
+               </li>
+               <li>
+                  Pourcentage de promotion : {{product.discount_percent}} %
+               </li>
+               <li>
+                  Quantité en stock : {{product.quantity}}
+               </li>
+               <li>
+                  Nombre d'articles vendus : {{product.sales_number}}
+               </li>
+               <li>
+                  Commentaires : {{product.comments}}
+               </li>
+          </ul>
+      </div>
+      </body>
+
