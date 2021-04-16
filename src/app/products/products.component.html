@@ -1,1 +1,112 @@
-<p>products works!</p>
+<br>
+<button type="button" >Actualiser les données</button><br><br>
+<br>
+
+<table>
+    <thead>
+        <td>
+            Poisson
+        </td>
+        <div *ngFor="let p of poisson">
+            <td>
+                Nom : {{p.name}}                
+       
+    
+                Prix : {{p.price}} euros           
+           
+           
+                Prix en promotion : {{p.discount_price}} euros             
+            
+           
+                Pourcentage de promotion : {{p.discount_percent}} %             
+          
+            
+                Quantité en stock : {{p.quantity}}              
+    
+                Nombre d'articles vendus : {{p.sales_number}}               
+      
+                Commentaires : {{p.comments}}   
+            </td>
+            <input type="text" id="qte" name="qte" list="qte-list" #qte>
+            <button type="button" >Ajouter stock articles</button>
+            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
+            <button type="button">Changement %</button>
+            <br> <br>        
+        </div>
+    </thead>
+</table>
+
+<br><br>
+
+
+<table>
+    <thead>
+        <td>
+            Fruit de mer
+        </td>
+        <div *ngFor="let p of fruitdemer">
+            <td>
+                Nom : {{p.name}}                
+       
+    
+                Prix : {{p.price}} euros           
+           
+           
+                Prix en promotion : {{p.discount_price}} euros             
+            
+           
+                Pourcentage de promotion : {{p.discount_percent}} %             
+          
+            
+                Quantité en stock : {{p.quantity}}              
+    
+                Nombre d'articles vendus : {{p.sales_number}}               
+      
+                Commentaires : {{p.comments}}   
+            </td>
+            <input type="text" id="qte" name="qte" list="qte-list" #qte>
+            <button type="button" >Ajouter stock articles</button>
+            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
+            <button type="button">Changement %</button>
+            <br> <br>  
+        </div>
+    </thead>
+</table>
+
+<br><br>
+
+<table>
+    <thead>
+        <td>
+            Crustacé
+        </td>
+        <div *ngFor="let p of crustacer">
+            <td>
+                Nom : {{p.name}}                
+       
+    
+                Prix : {{p.price}} euros           
+           
+           
+                Prix en promotion : {{p.discount_price}} euros             
+            
+           
+                Pourcentage de promotion : {{p.discount_percent}} %             
+          
+            
+                Quantité en stock : {{p.quantity}}              
+    
+                Nombre d'articles vendus : {{p.sales_number}}               
+      
+                Commentaires : {{p.comments}}   
+            </td>
+            <input type="text" id="qte" name="qte" list="qte-list" #qte>
+            <button type="button" >Ajouter stock articles</button>
+            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
+            <button type="button">Changement %</button>
+
+            <br>  <br>        
+ 
+        </div>
+    </thead>
+</table>

@@ -5,10 +5,10 @@
 	<option *ngFor="let p of products">{{p.name}}</option>
 </datalist>
 
-   <button type="button" (click)="getProductName(prod.value)">
-      search</button><br><br>
+   <button type="button" (click)="getProductName(prod.value)">search</button><br><br>
    
    <input type="text" id="qte" name="qte" list="qte-list" #qte>
+   <input type="text" id="price" name="price" list="price-list" #price>
    <button type="button" (click)="incrementQteStock(qte.value,prod.value)">
       Ajouter stock articles</button>
    <button type="button" (click)="decrementQteStock(qte.value,prod.value)">
