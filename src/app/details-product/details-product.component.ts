@@ -8,7 +8,7 @@ import { ProductsService } from '../services/products.service'
 
 export class DetailsProductComponent implements OnInit {
   products;
-  product;
+  product;;
   listproducts;
   url;
 
@@ -19,7 +19,8 @@ export class DetailsProductComponent implements OnInit {
   ngOnInit() {
     this.productsService.getData().subscribe(res => {
         this.products = res;
-        this.getProductId(1);
+        //this.getProductId(1);
+        console.log(this.product)
       },
       (err) => {  
         alert('failed loading json data');
@@ -67,19 +68,80 @@ export class DetailsProductComponent implements OnInit {
     }
   }
 
-  incrementQteStock(qte,name){
-    this.url="http://127.0.0.1:8000/incrementStock/"+this.getProductNameID(name)+"/"+qte+"/"
-    window.open(this.url);
+  refreshData(){
+    this.productsService.getData().subscribe(res => {
+      this.products = res;
+    },(err)=>{
+      alert('failerd loading json data');
+      console.log(err);
+    });
   }
 
-  decrementQteStock(qte,name){
-    this.url="http://127.0.0.1:8000/decrementStock/"+this.getProductNameID(name)+"/"+qte+"/"
-    window.open(this.url);
+  addTransaction(name,qte,price){
+
+    this.productsService.http.patch(`http://127.0.0.1:8000/transactions/`, name).subscribe(
+      res => { 
+        console.log('received ok response from patch request');
+      },
+      error => {
+        console.error('There was an error during the request');
+        console.log(error);
+      });
+    
+/*    date (ajoutée automatiquement lors de l’enregistrement de la transaction)
+● prix
+● quantité
+● tigID (ID d’origine dans l’API de Bateau Thibault)
+● type (une transaction peut être  0 un achat, 1 une vente, ou 2 des invendus)*/
+
   }
- 
-  changePourcentage(pourcentage,name){
-    this.url="http://127.0.0.1:8000/changePourcent/"+this.getProductNameID(name)+"/"+pourcentage+"/"
-    window.open(this.url);
+
+  incrementQteStock(name,qte,price){
+    var idName = this.getProductNameID(name);
+    //console.log(name)
+    this.productsService.increment(idName,qte).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.refreshData();
+
+    this.productsService.transaction(name,qte,price).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    
+  }
+
+  decrementQteStock(name,qte){
+    var idName = this.getProductNameID(name);
+    //console.log(name)
+    //this.ngOnInit();
+    this.productsService.decrement(idName,qte).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.refreshData();
+  }
+
+  changePercent(name,p){
+    var idName = this.getProductNameID(name);
+    console.log(idName)
+    console.log(p)
+    console.log(typeof(p));
+    this.productsService.percent(idName,p).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {
+      alert('failed loading json data');
+    });
+    this.refreshData();
+
   }
 
 
