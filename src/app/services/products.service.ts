@@ -38,4 +38,12 @@ export class ProductsService {
     return this.http.patch(this.urlApi+"/transactions/",name);
   }
 
+  public stockUpdateProduct(id:number,quantity:number){
+    let json={
+      quantity: quantity,
+    }
+    const headers = {'content-type':'application/json'}
+    return this.http.patch(this.urlApi+"/product/"+id+"/",json,{'headers':headers})
+  }
+
 }

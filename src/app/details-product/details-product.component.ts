@@ -99,20 +99,13 @@ export class DetailsProductComponent implements OnInit {
   incrementQteStock(name,qte,price){
     var idName = this.getProductNameID(name);
     //console.log(name)
-    this.productsService.increment(idName,qte).subscribe(res => {
+    this.productsService.stockUpdateProduct(idName,qte).subscribe(res => {
       console.log(res);
     },
     (err) => {  
       alert('failed loading json data');
     });
     this.refreshData();
-
-    this.productsService.transaction(name,qte,price).subscribe(res => {
-      console.log(res);
-    },
-    (err) => {  
-      alert('failed loading json data');
-    });
     
   }
 
