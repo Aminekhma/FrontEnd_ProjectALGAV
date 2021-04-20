@@ -11,18 +11,23 @@ export class ProductsComponent implements OnInit {
   poisson;
   crustacer;
   fruitdemer;
-
+  isClicked;
 
   constructor(public productsService : ProductsService) {
     this.products = [];
     this.poisson = [];
     this.crustacer = [];
     this.fruitdemer = [];
+    this.isClicked = false;
+    
   }
   ngOnInit() {
     this.productsService.getData().subscribe(res => {
         this.products = res;
-        this.getProductId(1);
+        //this.getProductId(1);
+        this.poisson = [];
+        this.crustacer = [];
+        this.fruitdemer = [];
         this.initialazeTab();
       },
       (err) => {  
@@ -53,6 +58,73 @@ export class ProductsComponent implements OnInit {
     console.log(this.crustacer)
   }
 
+  getProductName(name){
+    for(let p of this.products){
+      if(p.name== name){
+        this.product = p;
+        this.isClicked = true;
+      }
+    }
+  }
 
+  getProductNameID(name){
+    for(let p of this.products){
+      if(p.name== name){
+        return p.tigID
+      }
+    }
+  }
+  
+  refreshData(){
+    this.productsService.getData().subscribe(res => {
+      this.products = res;
+    },(err)=>{
+      alert('failerd loading json data');
+      console.log(err);
+    });
+  }
+
+  incrementQteStock(name,qte){
+    var idName = this.getProductNameID(name);
+    //console.log(name)
+    this.productsService.increment(idName,qte).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.ngOnInit();
+  }
+
+  incrementAll(){
+
+  }
+
+  decrementQteStock(name,qte){
+    var idName = this.getProductNameID(name);
+    //console.log(name)
+    //this.ngOnInit();
+    this.productsService.decrement(idName,qte).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.ngOnInit();
+  }
+
+  changePercent(name,p){
+    var idName = this.getProductNameID(name);
+    console.log(idName)
+    console.log(p)
+    console.log(typeof(p));
+    this.productsService.percent(idName,p).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {
+      alert('failed loading json data');
+    });
+    this.ngOnInit();
+  }
 
 }

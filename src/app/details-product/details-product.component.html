@@ -1,49 +1,61 @@
+<html>
+<body>
 <label for="product">Selectionnez le produit  : </label>
-<input type="text" id="prod" name="prod" list="product-list" #prod>
+<div class="search_box">
+<input type="text" id="prod" name="prod" list="product-list" placeholder="Search..." #prod>
+</div>
 
 <datalist id="product-list">
 	<option *ngFor="let p of products">{{p.name}}</option>
 </datalist>
 
-   <button type="button" (click)="getProductName(prod.value)">search</button><br><br>
+<div class="btn_search"><button type="button" (click)="getProductName(prod.value)">Search</button></div><br><br>
    
+<div *ngIf="product != undefined ">
+
    <input type="text" id="qte" name="qte" list="qte-list" #qte>
    <input type="text" id="price" name="price" list="price-list" #price>
-   <button type="button" (click)="incrementQteStock(qte.value,prod.value)">
+
+   <button type="button" (click)="incrementQteStock(prod.value,qte.value,price.value)">
       Ajouter stock articles</button>
-   <button type="button" (click)="decrementQteStock(qte.value,prod.value)">
+   <button type="button" (click)="decrementQteStock(prod.value,qte.value,price.value)">
       Retirer Stock articles</button><br><br>
+   
+      <br>      <br>
 
    <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
-   <button type="button" (click)="changePourcentage(pourcentage.value,prod.value)">Changement %</button><br><br>
+   <button type="button" (click)="changePercent(prod.value,pourcentage.value)">Changement %</button><br><br>
 
    <body>
-      <div id="infosProduct">
-          <h1>Descriptions Produits</h1>
+      <h1>Descriptions Produits</h1>
+
+      <div *ngFor="let p of products">
+
           <ul>
-               <li>
-                  Nom : {{product.name}}
+               <li *ngIf="p.name == prod.value">
+                  Nom : {{p.name}}
                </li>
-               <li>
-                  Prix : {{product.price}} euros
+               <li *ngIf="p.name == prod.value">
+                  Prix : {{p.price}} euros
                </li>
-               <li>
-                  Prix en promotion : {{product.discount_price}} euros
+               <li *ngIf="p.name == prod.value">
+                  Prix en promotion : {{p.discount_price}} euros
                </li>
-               <li>
-                  Pourcentage de promotion : {{product.discount_percent}} %
+               <li *ngIf="p.name == prod.value">
+                  Pourcentage de promotion : {{p.discount_percent}} %
                </li>
-               <li>
-                  Quantité en stock : {{product.quantity}}
+               <li *ngIf="p.name == prod.value">
+                  Quantité en stock : {{p.quantity}}
                </li>
-               <li>
-                  Nombre d'articles vendus : {{product.sales_number}}
+               <li *ngIf="p.name == prod.value">
+                  Nombre d'articles vendus : {{p.sales_number}}
                </li>
-               <li>
-                  Commentaires : {{product.comments}}
+               <li *ngIf="p.name == prod.value">
+                  Commentaires : {{p.comments}}
                </li>
           </ul>
       </div>
       </body>
-
-<button type="button" (click)="updateProductN(prod.value)">Actualiser</button><br><br>
+   </div>
+</body>
+</html>

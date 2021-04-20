@@ -1,36 +1,27 @@
-<br>
-<button type="button" >Actualiser les données</button><br><br>
-<br>
+<button type="button" (click)="incrementAll()">
+    Actualiser les données</button><br><br>
+
+
+            <br><br>
 
 <table>
     <thead>
-        <td>
-            Poisson
-        </td>
+    <td>Poisson</td>
         <div *ngFor="let p of poisson">
             <td>
                 Nom : {{p.name}}                
-       
-    
                 Prix : {{p.price}} euros           
-           
-           
                 Prix en promotion : {{p.discount_price}} euros             
-            
-           
                 Pourcentage de promotion : {{p.discount_percent}} %             
-          
-            
                 Quantité en stock : {{p.quantity}}              
-    
                 Nombre d'articles vendus : {{p.sales_number}}               
-      
                 Commentaires : {{p.comments}}   
             </td>
             <input type="text" id="qte" name="qte" list="qte-list" #qte>
-            <button type="button" >Ajouter stock articles</button>
-            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
-            <button type="button">Changement %</button>
+            <button type="button" (click)="incrementQteStock(p.name,qte.value)">
+               Ajouter stock articles</button>
+            <button type="button" (click)="decrementQteStock(p.name,qte.value)">
+               Retirer Stock articles</button>
             <br> <br>        
         </div>
     </thead>
@@ -47,27 +38,18 @@
         <div *ngFor="let p of fruitdemer">
             <td>
                 Nom : {{p.name}}                
-       
-    
                 Prix : {{p.price}} euros           
-           
-           
                 Prix en promotion : {{p.discount_price}} euros             
-            
-           
                 Pourcentage de promotion : {{p.discount_percent}} %             
-          
-            
                 Quantité en stock : {{p.quantity}}              
-    
                 Nombre d'articles vendus : {{p.sales_number}}               
-      
                 Commentaires : {{p.comments}}   
             </td>
             <input type="text" id="qte" name="qte" list="qte-list" #qte>
-            <button type="button" >Ajouter stock articles</button>
-            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
-            <button type="button">Changement %</button>
+            <button type="button" (click)="incrementQteStock(p.name,qte.value)">
+                Ajouter stock articles</button>
+             <button type="button" (click)="decrementQteStock(p.name,qte.value)">
+                Retirer Stock articles</button>
             <br> <br>  
         </div>
     </thead>
@@ -83,27 +65,18 @@
         <div *ngFor="let p of crustacer">
             <td>
                 Nom : {{p.name}}                
-       
-    
                 Prix : {{p.price}} euros           
-           
-           
                 Prix en promotion : {{p.discount_price}} euros             
-            
-           
                 Pourcentage de promotion : {{p.discount_percent}} %             
-          
-            
                 Quantité en stock : {{p.quantity}}              
-    
                 Nombre d'articles vendus : {{p.sales_number}}               
-      
                 Commentaires : {{p.comments}}   
             </td>
             <input type="text" id="qte" name="qte" list="qte-list" #qte>
-            <button type="button" >Ajouter stock articles</button>
-            <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
-            <button type="button">Changement %</button>
+            <button type="button" (click)="incrementQteStock(p.name,qte.value)">
+                Ajouter stock articles</button>
+             <button type="button" (click)="decrementQteStock(p.name,qte.value)">
+                Retirer Stock articles</button>
 
             <br>  <br>        
  
