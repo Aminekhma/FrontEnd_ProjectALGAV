@@ -18,7 +18,7 @@
                 Commentaires : {{p.comments}}   
             </td>
             <input type="text" id="qte" name="qte" list="qte-list" #qte>
-            <button type="button" (click)="incrementQteStock(p.name,qte.value)">
+            <button type="button" (click)="incrementQteStock(p.name,qte.value,unde)">
                Ajouter stock articles</button>
             <button type="button" (click)="decrementQteStock(p.name,qte.value)">
                Retirer Stock articles</button>

@@ -96,9 +96,6 @@ export class ProductsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  incrementAll(){
-
-  }
 
   decrementQteStock(name,qte){
     var idName = this.getProductNameID(name);
