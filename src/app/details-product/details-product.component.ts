@@ -77,6 +77,7 @@ export class DetailsProductComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   addTransaction(name,qte,price,type){
       var idName = this.getProductNameID(name);
       //console.log(name)
@@ -88,6 +89,18 @@ export class DetailsProductComponent implements OnInit {
       });
       this.refreshData();
     }
+=======
+  addTransaction(name,qte,price){
+
+    this.productsService.http.patch(`http://127.0.0.1:8000/transactions/`, name).subscribe(
+      res => { 
+        console.log('received ok response from patch request');
+      },
+      error => {
+        console.error('There was an error during the request');
+        console.log(error);
+      });
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
     
 /*    date (ajoutée automatiquement lors de l’enregistrement de la transaction)
 ● prix
@@ -95,6 +108,7 @@ export class DetailsProductComponent implements OnInit {
 ● tigID (ID d’origine dans l’API de Bateau Thibault)
 ● type (une transaction peut être  0 un achat, 1 une vente, ou 2 des invendus)*/
 
+<<<<<<< HEAD
 
   incrementQteStock(name,qte,price){
     var idName = this.getProductNameID(name);
@@ -110,6 +124,24 @@ export class DetailsProductComponent implements OnInit {
   }
 
   decrementQteStock(name,qte,price){
+=======
+  }
+
+  incrementQteStock(name,qte,price){
+    var idName = this.getProductNameID(name);
+    //console.log(name)
+    this.productsService.stockUpdateProduct(idName,qte).subscribe(res => {
+      console.log(res);
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.refreshData();
+    
+  }
+
+  decrementQteStock(name,qte){
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
     var idName = this.getProductNameID(name);
     //console.log(name)
     //this.ngOnInit();
@@ -120,8 +152,11 @@ export class DetailsProductComponent implements OnInit {
       alert('failed loading json data');
     });
     this.refreshData();
+<<<<<<< HEAD
     this.addTransaction(name,qte,price,1);
 
+=======
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
   }
 
   changePercent(name,p){

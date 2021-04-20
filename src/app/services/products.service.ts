@@ -28,6 +28,26 @@ export class ProductsService {
   decrement(name,qte){
     return this.http.get(this.urlApi+"/decrementStock/" + name +"/" + qte + "/");
   }
+<<<<<<< HEAD
+=======
+
+  percent(name,p){
+    return this.http.get(this.urlApi+"/changePercent/" + name + "/" + p + "/");
+  }
+
+  transaction(name,p,price){
+    console.log("aaaaaaaaaaaaaaaaaaaaaa")
+    return this.http.patch(this.urlApi+"/transactions/",name);
+  }
+
+  public stockUpdateProduct(id:number,quantity:number){
+    let json={
+      quantity: quantity,
+    }
+    const headers = {'content-type':'application/json'}
+    return this.http.patch(this.urlApi+"/product/"+id+"/",json,{'headers':headers})
+  }
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
 
   percent(name,p){
     return this.http.get(this.urlApi+"/changePercent/" + name + "/" + p + "/");

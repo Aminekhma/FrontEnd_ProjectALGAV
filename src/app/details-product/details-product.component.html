@@ -18,7 +18,11 @@
 
    <button type="button" (click)="incrementQteStock(prod.value,qte.value,price.value)">
       Ajouter stock articles</button>
+<<<<<<< HEAD
    <button type="button" (click)="decrementQteStock(prod.value,qte.value,price.value)">
+=======
+   <button type="button" (click)="decrementQteStock(prod.value,qte.value)">
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
       Retirer Stock articles</button><br><br>
    
       <br>      <br>
@@ -26,6 +30,7 @@
    <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
    <button type="button" (click)="changePercent(prod.value,pourcentage.value)">Changement %</button><br><br>
 
+   <div *ngIf="product != undefined ">
    <body>
       <h1>Descriptions Produits</h1>
 
@@ -57,5 +62,8 @@
       </div>
       </body>
    </div>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+>>>>>>> 52227a3645f255cac317241d3eefef80bfd68c70
