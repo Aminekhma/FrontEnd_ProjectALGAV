@@ -77,10 +77,10 @@ export class DetailsProductComponent implements OnInit {
     });
   }
 
-  addTransaction(name,qte,price,type){
+  addTransaction(name,qte,type){
       var idName = this.getProductNameID(name);
       //console.log(name)
-      this.productsService.transactionUpdateProduct(idName,qte,type,price).subscribe(res => {
+      this.productsService.transactionUpdateProduct(idName,qte,type).subscribe(res => {
         console.log(res);
       },
       (err) => {  
@@ -96,7 +96,7 @@ export class DetailsProductComponent implements OnInit {
 ● type (une transaction peut être  0 un achat, 1 une vente, ou 2 des invendus)*/
 
 
-  incrementQteStock(name,qte,price){
+  incrementQteStock(name,qte){
     var idName = this.getProductNameID(name);
     //console.log(name)
     this.productsService.increment(idName,qte).subscribe(res => {
@@ -106,11 +106,10 @@ export class DetailsProductComponent implements OnInit {
       alert('failed loading json data');
     });
     this.refreshData();
-    if(price=!undefined){
-      this.addTransaction(name,qte,price,0);
-    }  }
+    this.addTransaction(name,qte,0);
+ }
 
-  decrementQteStock(name,qte,price){
+  decrementQteStock(name,qte){
     var idName = this.getProductNameID(name);
 
     this.productsService.decrement(idName,qte).subscribe(res => {
@@ -120,9 +119,8 @@ export class DetailsProductComponent implements OnInit {
       alert('failed loading json data');
     });
     this.refreshData();
-    if(price=!undefined){
-      this.addTransaction(name,qte,price,1);
-    }
+    this.addTransaction(name,qte,1);
+    
   }
 
   changePercent(name,p){

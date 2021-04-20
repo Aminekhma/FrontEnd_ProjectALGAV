@@ -33,10 +33,9 @@ export class ProductsService {
     return this.http.get(this.urlApi+"/changePercent/" + name + "/" + p + "/");
   }
 
-  public transactionUpdateProduct(id:number,quantity:number,transaction_type:number,price:number){
+  public transactionUpdateProduct(id:number,quantity:number,transaction_type:number){
     let json={
       id:id,
-      price:price,
       transaction_type:transaction_type,
       quantity: quantity,
     }
