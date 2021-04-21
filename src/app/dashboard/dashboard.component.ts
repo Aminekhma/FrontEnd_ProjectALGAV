@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import Chart, { ChartType, ChartOptions } from 'chart.js';
 import { ProductsService } from '../services/products.service';
 
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,6 +10,7 @@ import { ProductsService } from '../services/products.service';
 export class DashboardComponent implements OnInit {
   product;
   products;
+  transactions;
   poisson;
   crustacer;
   fruitdemer;
@@ -35,6 +34,16 @@ export class DashboardComponent implements OnInit {
         this.crustacer.push(p);
       }
     }
+  }
+
+  initTransaction() {
+    this.productsService.getTransactions().subscribe(res => {
+        this.transactions = res;
+        console.log(this.transactions)
+      },
+      (err) => {  
+        alert('failed loading json data');
+      });
   }
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service'
+import { TransactionService } from '../services/transaction.service'
+
 @Component({
   selector: 'app-details-product',
   templateUrl: './details-product.component.html',
@@ -12,14 +14,13 @@ export class DetailsProductComponent implements OnInit {
   listproducts;
   url;
 
-  constructor(public productsService : ProductsService) {
+  constructor(public productsService : ProductsService, public transactionService : TransactionService) {
     this.products = [];
   }
 
   ngOnInit() {
     this.productsService.getData().subscribe(res => {
         this.products = res;
-        //this.getProductId(1);
         console.log(this.product)
       },
       (err) => {  
@@ -71,23 +72,26 @@ export class DetailsProductComponent implements OnInit {
   refreshData(){
     this.productsService.getData().subscribe(res => {
       this.products = res;
+
     },(err)=>{
       alert('failerd loading json data');
       console.log(err);
     });
   }
 
+
+
   addTransaction(name,qte,type){
       var idName = this.getProductNameID(name);
-      //console.log(name)
-      this.productsService.transactionUpdateProduct(idName,qte,type).subscribe(res => {
+      this.transactionService.transactionUpdateProduct(idName,qte,type).subscribe(res => {
         console.log(res);
+        this.refreshData();
+
       },
       (err) => {  
         alert('failed loading json data');
       });
-      this.refreshData();
-    }
+  }
     
 /*    date (ajoutée automatiquement lors de l’enregistrement de la transaction)
 ● prix
@@ -98,14 +102,14 @@ export class DetailsProductComponent implements OnInit {
 
   incrementQteStock(name,qte){
     var idName = this.getProductNameID(name);
-    //console.log(name)
     this.productsService.increment(idName,qte).subscribe(res => {
       console.log(res);
+      this.refreshData();
+
     },
     (err) => {  
       alert('failed loading json data');
     });
-    this.refreshData();
     this.addTransaction(name,qte,0);
  }
 
@@ -114,27 +118,27 @@ export class DetailsProductComponent implements OnInit {
 
     this.productsService.decrement(idName,qte).subscribe(res => {
       console.log(res);
+      this.refreshData();
+
     },
     (err) => {  
       alert('failed loading json data');
     });
-    this.refreshData();
     this.addTransaction(name,qte,1);
     
   }
 
   changePercent(name,p){
     var idName = this.getProductNameID(name);
-    console.log(idName)
-    console.log(p)
-    console.log(typeof(p));
+  
     this.productsService.percent(idName,p).subscribe(res => {
       console.log(res);
+      this.refreshData();
+
     },
     (err) => {
       alert('failed loading json data');
     });
-    this.refreshData();
 
   }
 

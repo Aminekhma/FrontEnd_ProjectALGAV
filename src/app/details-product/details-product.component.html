@@ -1,59 +1,85 @@
-
+<html>
+   <body>
    <label for="product">Selectionnez le produit  : </label>
-   
-   <div class="search_box">
-   <input type="text" id="prod" name="prod" list="product-list" placeholder="Search..." #prod>
-   </div>
 
-   <datalist id="product-list">
-      <option *ngFor="let p of products">{{p.name}}</option>
-   </datalist>
-
-   <div class="btn_search">
-      <i class="fas fa-search"></i>
-
-         <button type="button" (click)="getProductName(prod.value)">Search</button></div><br><br>
+   <div class="container">
+      <div class="search_wrap">
+         <div class="search_box">
+            <input type="text" class="input" id="prod" name="prod" list="product-list" placeholder="Search..." #prod>
+            <datalist id="product-list">
+               <option *ngFor="let p of products">{{p.name}}</option>
+            </datalist>
+               <div class="btn btn_common" (click)="getProductName(prod.value)">
+                  <i class="fas fa-search"></i>
+               </div>
+         </div>   
+      </div>
+   </div>      
       
    <div *ngIf="product != undefined ">
+      <div class="container">
+         <div class="search_wrap">
+            <div class="search_box">   
+               <input class="input" type="text" id="qte" name="qte" list="qte-list" placeholder="Quantity... " #qte>
+               <div class="btn1 btn_common1" (click)="incrementQteStock(prod.value,qte.value)">Achat</div>
+               <div class="btn2 btn_common2" (click)="decrementQteStock(prod.value,qte.value)">Vente</div>
+            </div>
+         </div>   
+      </div>
 
-      <input type="text" id="qte" name="qte" list="qte-list" #qte>
-
-      <button type="button" (click)="incrementQteStock(prod.value,qte.value)">
-         Ajouter stock articles</button>
-      <button type="button" (click)="decrementQteStock(prod.value,qte.value)">
-         Retirer Stock articles</button><br><br>
-      
+         <div class="container">
+            <div class="search_wrap">
+               <div class="search_box">  
+                  <input class ="input" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
+                  <div class="btn btn_common" (click)="changePercent(prod.value,pourcentage.value)">pourcentage</div>
+               </div>
+            </div>
+         </div> 
          <br>      <br>
-
-      <input type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" #pourcentage>
-      <button type="button" (click)="changePercent(prod.value,pourcentage.value)">Changement %</button><br><br>
-
-      <div *ngIf="product != undefined ">
+      <!--<div *ngIf="product != undefined ">-->
+      
          <h1>Descriptions Produits</h1>
+         <table> 
+            <tr id="header">
 
-         <div *ngFor="let p of products">
+               <th>Nom</th>
+               <th>        Prix produit        </th>
+               <th>Prix en promotion</th>
+               <th>Pourcentage de promotion</th>
+               <th>Quantité en stock</th>
+               <th> Nombre d'articles vendus</th>
+               <th>Commentaires</th>
 
-            <ul>
-                  <li *ngIf="p.name == prod.value">
-                     Nom : {{p.name}}
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Prix : {{p.price}} euros
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Prix en promotion : {{p.discount_price}} euros
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Pourcentage de promotion : {{p.discount_percent}} %
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Quantité en stock : {{p.quantity}}
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Nombre d'articles vendus : {{p.sales_number}}
-                  </li>
-                  <li *ngIf="p.name == prod.value">
-                     Commentaires : {{p.comments}}
-                  </li>
-            </ul>
-         </div></div>
+
+            </tr>               
+
+               <tr *ngFor="let p of products">
+                     <th *ngIf="p.name == prod.value">
+                        {{p.name}}
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                        {{p.price}} €
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                       {{p.discount_price}} €
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                        {{p.discount_percent}} %
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                        {{p.quantity}}
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                        {{p.sales_number}}
+                     </th>
+                     <th *ngIf="p.name == prod.value">
+                        {{p.comments}}
+                     </th>
+               </tr>
+         </table>
+
+
+     </div>
+   <!--</div>-->
+</body>
+</html>

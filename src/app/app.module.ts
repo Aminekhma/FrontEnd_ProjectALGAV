@@ -12,6 +12,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DetailsProductComponent,
     ProductsComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,

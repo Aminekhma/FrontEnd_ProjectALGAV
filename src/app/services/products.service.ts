@@ -17,6 +17,10 @@ export class ProductsService {
     return this.http.get(this.urlApi+"/products/");
   }
 
+  getTransactions(){
+    return this.http.get(this.urlApi+"/transactions/");
+  }
+
   get(url){
     return this.http.get(url);
   }
@@ -33,13 +37,5 @@ export class ProductsService {
     return this.http.get(this.urlApi+"/changePercent/" + name + "/" + p + "/");
   }
 
-  public transactionUpdateProduct(id:number,quantity:number,transaction_type:number){
-    let json={
-      id:id,
-      transaction_type:transaction_type,
-      quantity: quantity,
-    }
-    const headers = {'content-type':'application/json'}
-    return this.http.patch(this.urlApi+"/transactions/",json,{'headers':headers})
-  }
+
 }

@@ -3,7 +3,7 @@
 
 body{
 
-    background: no-repeat url(background.png);
+    /*background: no-repeat url(background.png);*/
     background-size: cover;
     background-attachment:fixed;
 
