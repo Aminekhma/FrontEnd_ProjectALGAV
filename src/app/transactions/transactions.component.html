@@ -1,29 +1,47 @@
-<legend>Ajouter Transaction</legend>
 
-<div id="container">
-    <div id="row">
-        <label for="date">Date</label> <input type="text" id="date" #date>
+<div class="container">
+    <div class="search_wrap">
+       <div class="search_box">   
+            <input class="input1" type="datetime-local" id="date" #date>
+            <input class="input2" type="text" id="quantity" placeholder="Quantity..." #quantity>
+            <input class="input4" type="text" id="id" placeholder="ID..." #id>
+            <input class="input5" type="text" id="type" placeholder="Type..." #type>
+        </div>
+            <div class="btn btn_common" (click)="postTransactions(date.value,quantity.value,id.value,type.value)"></div>
     </div>
-    <div id="row">
-        Quantité : <input type="text" id="quantity" #quantity>
-    </div>
-    <div id="row">
-        Prix : <input type="text" id="price" #price>
-    </div>
-    <div id="row">
-        Id : <input type="text" id="id" #id>
-    </div>
-    <div id="row">
-        Type de transaction : <input type="text" id="type" #type>
-    </div>
-    <button (click)="postTransactions(date.value,price.value,quantity.value,id.value,type.value)">Envoyer</button>
 </div>
 
 
-<div *ngFor="let t of listTransactions">
-    prix : {{t.price}}<br>
-    id : {{t.tigID}}<br>
-    date : {{t.date}}<br>
-    transaction_type : {{t.transaction_type}}<br>
-    _____________________________________________
-</div>
+<table class="tab"> 
+    <tr id="header">
+
+       <th>Prix</th>
+       <th>Id</th>
+       <th>Date</th>
+       <th>Type de transaction</th>
+    </tr>           
+
+<tr *ngFor="let t of getNewList()">
+ 
+    <th>
+        {{t.price}} €
+     </th>
+     <th>
+        {{t.tigID}} 
+     </th>
+     <th>
+        {{convertDate(t.date)}}
+     </th>
+     <th *ngIf="t.transaction_type == 0">
+        Achat
+     </th>
+     <th *ngIf="t.transaction_type == 1">
+        Vente
+     </th>
+     <th *ngIf="t.transaction_type == 2">
+        Invendu
+     </th>
+ 
+</tr>
+
+</table>
