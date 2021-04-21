@@ -10,8 +10,9 @@ export class TransactionsComponent implements OnInit {
 
   listTransactions;
   listCut;
-  date;
+  dat;
   cpt;
+
 
   constructor(public transactionService : TransactionService) { 
     this.listTransactions = []
@@ -38,7 +39,10 @@ export class TransactionsComponent implements OnInit {
     });
   }
 
-  postTransactions(date,quantity,tigID,transaction_type){
+  postTransactions(d,quantity,tigID,transaction_type){
+    console.log(d)
+    var date= d+":00Z"
+    console.log(date)
     this.transactionService.postTransaction({date,quantity,tigID,transaction_type}).subscribe(res=>{
       console.log(res);
       this.refreshTransaction();
@@ -60,9 +64,9 @@ export class TransactionsComponent implements OnInit {
   }
 
   convertDate(d){
-    this.date = new Date(d);
-    return this.date.getFullYear()+'-'+(this.date.getMonth()+1)+'-'+
-    this.date.getDate()+"  "+this.date.getHours()+':'+this.date.getMinutes();
+    this.dat = new Date(d);
+    return this.dat.getFullYear()+'-'+(this.dat.getMonth()+1)+'-'+
+    this.dat.getDate()+"  "+(this.dat.getHours()-2)+':'+this.dat.getMinutes();
 
   }
 
