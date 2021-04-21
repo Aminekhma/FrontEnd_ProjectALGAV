@@ -64,9 +64,10 @@ export class TransactionsComponent implements OnInit {
   }
 
   convertDate(d){
-    this.dat = new Date(d);
-    return this.dat.getFullYear()+'-'+(this.dat.getMonth()+1)+'-'+
-    this.dat.getDate()+"  "+(this.dat.getHours()-2)+':'+this.dat.getMinutes();
+ 
+    this.dat = (new Date(d));
+    return this.dat.getFullYear()+'-'+(this.dat.getUTCMonth()+1)+'-'+
+    this.dat.getUTCDate()+"  "+(this.dat.getUTCHours())+':'+this.dat.getUTCMinutes();
 
   }
 
