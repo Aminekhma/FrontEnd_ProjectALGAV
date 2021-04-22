@@ -5,6 +5,8 @@
     background-color: #16a085;
     color: #fff;
     padding: 10px 10px;
+    top: 8%;
+
 }
 
 .Fruitdemer{
@@ -14,7 +16,7 @@
     background-color: #16a085;
     color: #fff;
     padding: 10px 10px;
-    top: 90%;
+    top: 85%;
 }
 
 .Crustacer{
@@ -24,7 +26,117 @@
     background-color: #16a085;
     color: #fff;
     padding: 10px 10px;
-    top: 200%;
+    top: 175%;
+}
+
+.button1{
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    background: #16a085;
+    z-index: 1;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+    margin: 0;
+    position: absolute;
+    top: 12%;    
+}
+.button2{
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    background: #16a085;
+    z-index: 1;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+    margin: 0;
+    left: 150px;
+    position: absolute;
+    top: 12%;    
+}
+
+.button3{
+    position: absolute;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    background: #16a085;
+    z-index: 1;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+    margin: 0;
+    left: 300px;
+    position: absolute;
+    top: 12%;    
+}
+
+.button4{
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    background: #16a085;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+}
+.button5{
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    background: #16a085;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+}
+
+.button6{
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    background: #16a085;
+    cursor: pointer;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    border-radius: 50px;
+}
+
+.button1:hover{
+    background: green;
+}
+.button2:hover{
+    background: green;
+}.button3:hover{
+    background: green;
+}
+.button4:hover{
+    background: green;
+}
+.button5:hover{
+    background: green;
+}.button6:hover{
+    background: green;
 }
 
 .barre{
@@ -35,8 +147,12 @@
     background-color: #16a085;
     color: #fff;
     padding: 10px 10px;
-    top: 240%;
+    top: 210%;
 
+}
+
+.input1{
+    width: 100px;
 }
 
 
@@ -44,7 +160,7 @@
 
     position: absolute;
     left: 50%;
-    top: 70%;
+    top: 67%;
     transform: translate(-50%,-50%);
     border-collapse: collapse;
     width: 1500px;
@@ -77,12 +193,11 @@ td{
 
 }
 
-
 .tab2{
 
     position: absolute;
     left: 50%;
-    top: 190%;
+    top: 170%;
     transform: translate(-50%,-50%);
     border-collapse: collapse;
     width: 1500px;
@@ -114,7 +229,7 @@ td{
 
     position: absolute;
     left: 50%;
-    top: 280%;
+    top: 250%;
     transform: translate(-50%,-50%);
     border-collapse: collapse;
     width: 1500px;

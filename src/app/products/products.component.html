@@ -1,4 +1,6 @@
 <body>
+
+
 <br><br>
 <h1 class="Poisson">Poisson</h1>
         <table class="tab1"> 
@@ -16,14 +18,14 @@
             </tr>    
             <tr *ngFor="let p of products">
                <th *ngIf="p.category == 0">
-                  <input type="text" id="qte" name="qte" list="qte-list" #qte>
-                    <button type="button" (click)="incrementQteStock(p.name,qte.value)">
-                       Ajouter stock articles</button>
-                    <button type="button" (click)="decrementQteStock(p.name,qte.value)">
-                       Retirer Stock articles</button>
+                  <input class="input1" type="text" id="qte" name="qte" list="qte-list" (change)="refreshListStock(p.tigID,qte.value,p.name)" placeholder="Quantity..." #qte>
+                    <button class="button4" type="button" (click)="incrementQteStock(p.tigID,qte.value)">
+                       Achat</button>
+                    <button class="button5" type="button" (click)="decrementQteStock(p.tigID,qte.value)">
+                       Vente</button>
                      <br> 
-                     <input class ="input" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
-                     <button type="button" (click)="changePercent(p.name,pourcentage.value)">Pourcent</button> 
+                     <input class="input1" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
+                     <button class="button6" type="button" (click)="changePercent(p.tigID,pourcentage.value)">Pourcent</button> 
       
                      </th>
                   <th *ngIf="p.category == 0">
@@ -69,14 +71,14 @@
             </tr>    
             <tr *ngFor="let p of products">
                <th *ngIf="p.category == 1">
-                  <input type="text" id="qte" name="qte" list="qte-list" #qte>
-                    <button type="button" (click)="incrementQteStock(p.name,qte.value)">
-                       Ajouter stock articles</button>
-                    <button type="button" (click)="decrementQteStock(p.name,qte.value)">
-                       Retirer Stock articles</button>                
+                  <input class="input1" type="text" id="qte" name="qte" list="qte-list" (change)="refreshListStock(p.tigID,qte.value,p.name)" placeholder="Quantity..." #qte>
+                    <button class="button4" type="button" (click)="incrementQteStock(p.tigID,qte.value)">
+                       Achat</button>
+                    <button class="button5" type="button" (click)="decrementQteStock(p.tigID,qte.value)">
+                       Vente</button>                
                      <br> 
-                     <input class ="input" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
-                     <button type="button" (click)="changePercent(p.name,pourcentage.value)">Pourcent</button> 
+                     <input class="input1" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
+                     <button class="button6" type="button" (click)="changePercent(p.tigID,pourcentage.value)">Pourcent</button> 
                       </th>
                   <th *ngIf="p.category == 1">
                      {{p.name}}
@@ -122,13 +124,13 @@
             </tr>    
             <tr *ngFor="let p of products">
                <th *ngIf="p.category == 2">
-                     <input type="text" id="qte" name="qte" list="qte-list" #qte>
-                     <button type="button" (click)="incrementQteStock(p.name,qte.value)">
-                       Ajouter stock articles</button>
-                     <button type="button" (click)="decrementQteStock(p.name,qte.value)">
-                       Retirer Stock articles</button><br> 
-                     <input class ="input" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
-                     <button type="button" (click)="changePercent(p.name,pourcentage.value)">Pourcent</button>  
+                     <input class="input1" type="text" id="qte" name="qte" list="qte-list" (change)="refreshListStock(p.tigID,qte.value,p.name)" placeholder="Quantity..." #qte>
+                     <button class="button4" type="button" (click)="incrementQteStock(p.tigID,qte.value)">
+                       Achat</button>
+                     <button class="button5" type="button" (click)="decrementQteStock(p.tigID,qte.value)">
+                       Vente</button><br> 
+                     <input class="input1" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
+                     <button class="button6" type="button" (click)="changePercent(p.tigID,pourcentage.value)">Pourcent</button>  
                </th>
                <th *ngIf="p.category == 2">
                   {{p.name}}
@@ -161,5 +163,9 @@
 <br><br>
 
 <h1 class="barre"></h1>
+
+<button class="button1" type="button" (click)="postListStock()">Ajouter Stock Articles</button>
+<button class="button2" type="button" (click)="deleteListStock()">Retirer Stock Articles</button>
+<button class="button3" type="button" (click)="postListPercent()">Ajouter Pourcentage Articles</button>
 
 </body>

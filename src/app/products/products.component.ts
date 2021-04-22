@@ -14,6 +14,8 @@ export class ProductsComponent implements OnInit {
   crustacer;
   fruitdemer;
   isClicked;
+  listStock;
+  listPercent;
 
   constructor(public productsService : ProductsService, public transactionService : TransactionService) {
     this.products = [];
@@ -68,8 +70,7 @@ export class ProductsComponent implements OnInit {
   }
 
 
-  addTransaction(name,qte,type){
-      var idName = this.getProductNameID(name);
+  addTransaction(idName,qte,type){
       this.transactionService.transactionUpdateProduct(idName,qte,type).subscribe(res => {
         console.log(res);
         this.refreshData();
@@ -100,8 +101,8 @@ export class ProductsComponent implements OnInit {
     
   }
 
-  incrementQteStock(name,qte){
-    var idName = this.getProductNameID(name);
+  incrementQteStock(idName,qte){
+    console.log("id : "+idName)
     this.productsService.increment(idName,qte).subscribe(res => {
       console.log(res);
       this.refreshData();
@@ -110,12 +111,11 @@ export class ProductsComponent implements OnInit {
     (err) => {  
       alert('failed loading json data');
     });
-    this.addTransaction(name,qte,0);
+    this.addTransaction(idName,qte,0);
     this.refreshData();
  }
 
-  decrementQteStock(name,qte){
-    var idName = this.getProductNameID(name);
+  decrementQteStock(idName,qte){
 
     this.productsService.decrement(idName,qte).subscribe(res => {
       console.log(res);
@@ -126,28 +126,57 @@ export class ProductsComponent implements OnInit {
     (err) => {  
       alert('failed loading json data');
     });
-    this.addTransaction(name,qte,1);
+    this.addTransaction(idName,qte,1);
     this.refreshData();
-
-
-    
   }
 
-  changePercent(name,p){
-    var idName = this.getProductNameID(name);
+  changePercent(idName,p){
   
     this.productsService.percent(idName,p).subscribe(res => {
       console.log(res);
       this.refreshData();
-
-
     },
     (err) => {
       alert('failed loading json data');
     });
     this.refreshData();
+  }
 
+  refreshListStock(id,value,name){
+    this.listStock[id] = {value,id};
+    console.log(this.listStock);
+  }
 
+  postListStock(){
+    //console.log(this.listStock);
+    for(const property in this.listStock){
+      this.incrementQteStock(this.listStock[property].id,this.listStock[property].value);
+    }
+    this.listStock={};
+
+    this.refreshData();
+  }
+  
+  deleteListStock(){
+    //console.log(this.listStock);
+    for(const property in this.listStock){
+      this.decrementQteStock(this.listStock[property].id,this.listStock[property].value);
+    }
+    this.listStock={}
+    this.refreshData();
+  }
+
+  refreshListPercent(id,percent,name){
+    this.listPercent[id] = {id,name};
+  }
+
+  postListPercent(){
+    //console.log(this.listStock);
+    for(const property in this.listPercent){
+      this.changePercent(this.listPercent[property].id,this.listPercent[property].percent);
+    }
+    this.listPercent={};
+    this.refreshData();
   }
 
 
