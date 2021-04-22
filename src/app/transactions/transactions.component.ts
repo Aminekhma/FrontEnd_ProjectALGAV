@@ -39,10 +39,26 @@ export class TransactionsComponent implements OnInit {
     });
   }
 
-  postTransactions(d,quantity,tigID,transaction_type){
-    console.log(d)
+  postTransactions(d,quantity,tigID,t){
+    var transaction_type = -1;
+    if(t == "Vente"){
+      transaction_type=1
+    }
+    if(t == "Achat"){
+      transaction_type=0
+    }
+    if(t == "Invendu"){
+      transaction_type=2
+    }
+    if(transaction_type == -1){
+      return alert("Type incorrect")
+    }
+
+    if(parseInt(tigID) <= 0 || parseInt(tigID) > 16){
+      return alert("Id incorrect")
+    }
+    
     var date= d+":00Z"
-    console.log(date)
     this.transactionService.postTransaction({date,quantity,tigID,transaction_type}).subscribe(res=>{
       console.log(res);
       this.refreshTransaction();

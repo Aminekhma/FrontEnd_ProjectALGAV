@@ -1,3 +1,30 @@
-<div id="divChart">
-    <canvas id="myChart"></canvas>
+<div id="container">
+    <div id="divChart">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <div id="divChart2">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+</div>
+
+<div id="parametre">
+    
+
+
+    <label for="value-select">Choisir un mois:</label>
+
+    <input type="text" class="input" id="year" name="year" list="year-list" placeholder="Search..." #year>
+            <datalist id="year-list">
+               <option *ngFor="let obj of listYear">{{obj}}</option>
+            </datalist>
+    
+    <input type="text" class="input" id="month" name="month" list="month-list" placeholder="Search..." #month>
+            <datalist id="month-list">
+               <option *ngFor="let obj of listMonth">{{obj}}</option>
+            </datalist>
+
+    <button (click)="setYear(year.value)">Année</button>
+    <button (click)="setMonth(month.value)">Mois</button>
 </div>

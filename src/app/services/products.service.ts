@@ -29,6 +29,10 @@ export class ProductsService {
     return this.http.get(this.urlApi+"/incrementStock/" + name +"/" + qte + "/");
   }
 
+  invendu(name,qte){
+    return this.http.get(this.urlApi+"/invendu/" + name +"/" + qte + "/");
+  }
+
   decrement(name,qte){
     return this.http.get(this.urlApi+"/decrementStock/" + name +"/" + qte + "/");
   }

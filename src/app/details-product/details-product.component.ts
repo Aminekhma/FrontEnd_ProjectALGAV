@@ -68,6 +68,15 @@ export class DetailsProductComponent implements OnInit {
       }
     }
   }
+  
+  getProductQuantity(name){
+    for(let p of this.products){
+      if(p.name== name){
+        return p.quantity
+      }
+    }
+
+  }
 
   refreshData(){
     this.productsService.getData().subscribe(res => {
@@ -92,6 +101,8 @@ export class DetailsProductComponent implements OnInit {
         alert('failed loading json data');
       });
   }
+
+  
     
 /*    date (ajoutée automatiquement lors de l’enregistrement de la transaction)
 ● prix
@@ -114,6 +125,9 @@ export class DetailsProductComponent implements OnInit {
  }
 
   decrementQteStock(name,qte){
+    if(this.getProductQuantity(name)-qte < 0){
+      return alert("Quantité insufisante")
+    }
     var idName = this.getProductNameID(name);
 
     this.productsService.decrement(idName,qte).subscribe(res => {
@@ -128,7 +142,29 @@ export class DetailsProductComponent implements OnInit {
     
   }
 
+  invendu(name,qte){
+    if(this.getProductQuantity(name)-qte < 0){
+      return alert("Quantité insufisante")
+    }
+    var idName = this.getProductNameID(name);
+
+    this.productsService.invendu(idName,qte).subscribe(res => {
+      console.log(res);
+      this.refreshData();
+
+    },
+    (err) => {  
+      alert('failed loading json data');
+    });
+    this.addTransaction(name,qte,2);
+    
+  }
+
   changePercent(name,p){
+    console.log(typeof parseInt(p));
+    if(parseInt(p)<0 || parseInt(p)>100){
+      return alert("Valeur de pourcentage incorrect")
+    }
     var idName = this.getProductNameID(name);
   
     this.productsService.percent(idName,p).subscribe(res => {

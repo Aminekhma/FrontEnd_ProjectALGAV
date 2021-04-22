@@ -105,6 +105,9 @@ td{
 
 .btn{
     position: absolute;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
     width: 100px;
     height: 40px;
     background: #8076da;
@@ -113,12 +116,10 @@ td{
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
     border-radius: 50px;
-    display: flex;
     margin: 0;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    top: 41%;
+
 }
 
 .search_wrap .search_box .btn:hover{

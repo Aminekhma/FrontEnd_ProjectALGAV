@@ -1,6 +1,6 @@
 <html>
    <body>
-   <label for="product">Selectionnez le produit  : </label>
+      <h2>Selectionnez un produit  :</h2>
 
    <div class="container">
       <div class="search_wrap">
@@ -21,8 +21,12 @@
          <div class="search_wrap">
             <div class="search_box">   
                <input class="input" type="text" id="qte" name="qte" list="qte-list" placeholder="Quantity... " #qte>
-               <div class="btn1 btn_common1" (click)="incrementQteStock(prod.value,qte.value)">Achat</div>
-               <div class="btn2 btn_common2" (click)="decrementQteStock(prod.value,qte.value)">Vente</div>
+               <button class="btn1 btn_common1" type="button" (click)="incrementQteStock(prod.value,qte.value)">Achat</button>
+               <button class="btn2 btn_common2" type="button" (click)="decrementQteStock(prod.value,qte.value)">Vente</button>
+               <button class="btn3 btn_common3" type="button" (click)="invendu(prod.value,qte.value)">Invendu</button>
+
+               <!--<div class="btn1 btn_common1" (click)="incrementQteStock(prod.value,qte.value)">Achat</div>-->
+               <!--<div class="btn3 btn_common3" (click)="decrementQteStock(prod.value,qte.value)">Invendu</div>-->
             </div>
          </div>   
       </div>
@@ -31,7 +35,9 @@
             <div class="search_wrap">
                <div class="search_box">  
                   <input class ="input" type="text" id="pourcentage" name="pourcentage" list="pourcentage-list" placeholder="Pourcentage..." #pourcentage>
-                  <div class="btn btn_common" (click)="changePercent(prod.value,pourcentage.value)">pourcentage</div>
+                  <div class="btn btn_common" (click)="changePercent(prod.value,pourcentage.value)">
+                     <i class="fas fa-percentage"></i>
+                  </div>
                </div>
             </div>
          </div> 
